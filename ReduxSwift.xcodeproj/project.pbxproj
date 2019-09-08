@@ -13,6 +13,11 @@
 		44CBA3AE2323A3DA005E763E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3AD2323A3DA005E763E /* Assets.xcassets */; };
 		44CBA3B12323A3DA005E763E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3AF2323A3DA005E763E /* LaunchScreen.storyboard */; };
 		44CBA3BC2323A3DA005E763E /* ReduxSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3BB2323A3DA005E763E /* ReduxSwiftTests.swift */; };
+		44CBA3C92323A410005E763E /* ReduxHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3C82323A410005E763E /* ReduxHome.storyboard */; };
+		44CBA3CB2323A427005E763E /* ReduxHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */; };
+		44CBA3D12323AA1E005E763E /* PeopleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D02323AA1E005E763E /* PeopleStore.swift */; };
+		44CBA3D52323B240005E763E /* HomePresentationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D42323B240005E763E /* HomePresentationAction.swift */; };
+		44CBA3D72323B477005E763E /* ActionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D62323B477005E763E /* ActionStore.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +41,11 @@
 		44CBA3B72323A3DA005E763E /* ReduxSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReduxSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CBA3BB2323A3DA005E763E /* ReduxSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxSwiftTests.swift; sourceTree = "<group>"; };
 		44CBA3BD2323A3DB005E763E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44CBA3C82323A410005E763E /* ReduxHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReduxHome.storyboard; sourceTree = "<group>"; };
+		44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxHomeViewController.swift; sourceTree = "<group>"; };
+		44CBA3D02323AA1E005E763E /* PeopleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleStore.swift; sourceTree = "<group>"; };
+		44CBA3D42323B240005E763E /* HomePresentationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentationAction.swift; sourceTree = "<group>"; };
+		44CBA3D62323B477005E763E /* ActionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionStore.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +87,8 @@
 		44CBA3A52323A3D9005E763E /* ReduxSwift */ = {
 			isa = PBXGroup;
 			children = (
+				44CBA3C72323A3F4005E763E /* project */,
+				44CBA3C62323A3E6005E763E /* store */,
 				44CBA3A62323A3D9005E763E /* AppDelegate.swift */,
 				44CBA3A82323A3D9005E763E /* ViewController.swift */,
 				44CBA3AA2323A3D9005E763E /* Main.storyboard */,
@@ -94,6 +106,57 @@
 				44CBA3BD2323A3DB005E763E /* Info.plist */,
 			);
 			path = ReduxSwiftTests;
+			sourceTree = "<group>";
+		};
+		44CBA3C62323A3E6005E763E /* store */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3D62323B477005E763E /* ActionStore.swift */,
+				44CBA3D32323B224005E763E /* presentation */,
+				44CBA3D22323B21A005E763E /* models */,
+			);
+			path = store;
+			sourceTree = "<group>";
+		};
+		44CBA3C72323A3F4005E763E /* project */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3CC2323A477005E763E /* features */,
+			);
+			path = project;
+			sourceTree = "<group>";
+		};
+		44CBA3CC2323A477005E763E /* features */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3CD2323A47D005E763E /* home */,
+			);
+			path = features;
+			sourceTree = "<group>";
+		};
+		44CBA3CD2323A47D005E763E /* home */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3C82323A410005E763E /* ReduxHome.storyboard */,
+				44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		44CBA3D22323B21A005E763E /* models */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3D02323AA1E005E763E /* PeopleStore.swift */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		44CBA3D32323B224005E763E /* presentation */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3D42323B240005E763E /* HomePresentationAction.swift */,
+			);
+			path = presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +240,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44CBA3C92323A410005E763E /* ReduxHome.storyboard in Resources */,
 				44CBA3B12323A3DA005E763E /* LaunchScreen.storyboard in Resources */,
 				44CBA3AE2323A3DA005E763E /* Assets.xcassets in Resources */,
 				44CBA3AC2323A3D9005E763E /* Main.storyboard in Resources */,
@@ -197,7 +261,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44CBA3D52323B240005E763E /* HomePresentationAction.swift in Sources */,
 				44CBA3A92323A3D9005E763E /* ViewController.swift in Sources */,
+				44CBA3D72323B477005E763E /* ActionStore.swift in Sources */,
+				44CBA3D12323AA1E005E763E /* PeopleStore.swift in Sources */,
+				44CBA3CB2323A427005E763E /* ReduxHomeViewController.swift in Sources */,
 				44CBA3A72323A3D9005E763E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

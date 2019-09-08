@@ -25,6 +25,12 @@ fileprivate struct ActionStore {
     
     init() { }
     
+    /// Adds a subscriber to the actions observers lists to be called every time an action is dispatched
+    /// using this key.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION The name of the action that should be subscribed to.
+    ///   - observer: @escaping ACTION_OBSERVER
     mutating func subscribe(action: ACTION , observer: @escaping ACTION_OBSERVER) {
         
         if self.actionObservers[action] == nil {
@@ -34,6 +40,13 @@ fileprivate struct ActionStore {
         self.actionObservers[action]?.append(observer)
     }
     
+    /// Adds a subscriber for this action.
+    /// The transformer that is provided the data for this action. The transformer can create a new version
+    /// of the data and then return or if no changes are required the transformer should return the original data.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION The name of the action that should be subscribed to.
+    ///   - transformer: ACTION_TRANSFORMER
     mutating func subscribe(action: ACTION , transformer: ACTION_TRANSFORMER) {
         
         if self.actionTransformers[action] == nil {
@@ -45,6 +58,11 @@ fileprivate struct ActionStore {
         self.actionTransformers[action]?.append(transformer)
     }
     
+    /// Adds a subscriber for this action.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION The name of the action that should be subscribed to.
+    ///   - error: ERROR_OBSERVER The handler that is called upon an action being dispatched.
     mutating func subscribe(action: ACTION , error: ERROR_OBSERVER) {
         
         if self.errorObservers[action] == nil {
@@ -56,16 +74,31 @@ fileprivate struct ActionStore {
         self.errorObservers[action]?.append(error)
     }
     
+    /// Removes a transformer handler for an action.
+    ///
+    /// - Parameters:
+    ///   - transformer: TRANSFORMER_ID The id of the transformer that should be removed for this action
+    ///   - action: ACTION The action for this transformer.
     mutating func remove(transformer: TRANSFORMER_ID , action: ACTION) {
         guard let transformers = actionTransformers[action] else { return }
         self.actionTransformers[action] = transformers.filter{ $0.id == transformer }
     }
     
+    /// Removes an error handler for an observer id
+    ///
+    /// - Parameters:
+    ///   - error: OBSERVER_ID The id of the error observer that had previously subscribed to this action.
+    ///   - action: ACTION The action name for this error observer.
     mutating func remove(error: OBSERVER_ID , action: ACTION) {
         guard let errors = errorObservers[action] else { return }
         self.errorObservers[action] = errors.filter{ $0.id == error }
     }
     
+    /// Dispatches this data to all observers and transformers that have subscribed to this action.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION The name of the action that this data should be dispatched to.
+    ///   - data: Codable The codable data that will be provided to all subscribers of this action.
     func dispatch(action: ACTION , data: Codable) {
         
         var transformedData = data
@@ -82,6 +115,11 @@ fileprivate struct ActionStore {
         }
     }
     
+    /// Dispatches this error to all observers that have subscribed to this action.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION The name of the action that this error should be dispatched to.
+    ///   - error: The error that will be provided to all subscribers of this action.
     func dispatch(action: ACTION , error: Error) {
         
         guard let errorObservers = errorObservers[action] else{ return }
