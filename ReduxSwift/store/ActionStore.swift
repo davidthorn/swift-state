@@ -50,10 +50,12 @@ public struct PresentationPacket<Model: Codable>: Codable{
     public let url: URL
     public let item: Model?
     public let type: PresentationType
-    public init(url: URL, item: Model? , type: PresentationType = .push) {
+    public let action: ACTION
+    public init(url: URL, item: Model? , action: ACTION , type: PresentationType = .push) {
         self.url = url
         self.item = item
         self.type = type
+        self.action = action
     }
     
     /// Encodes the item T to data
@@ -66,6 +68,18 @@ public struct PresentationPacket<Model: Codable>: Codable{
             return Data.init()
         }
     }
+    
+}
+
+/// Attempts to decode as a PresentationPacket that contains a type T as its Model.
+///
+/// - Parameters:
+///   - type: Codable.Type A type that conforms to Codable
+///   - data: Decodable
+/// - Returns: Bool
+public func packet<T: Codable>(contains type: T.Type, data: Decodable) -> Bool {
+    guard let _ = decode(as: PresentationPacket<T>.self , data: data) else { return false }
+    return true
 }
 
 extension URL {
@@ -282,6 +296,26 @@ public func dispatch(action: ACTION , data: Codable, first: Bool = false) {
 
 public func dispatch(action: ACTION , error: Error) {
     store.dispatch(action: action, error: error)
+}
+
+/// Attempts to decode the decodable data provided into a PresentationPacket with the Model of type T
+///
+/// - Parameters:
+///   - packetType: T.Type Must conform to type Decodable
+///   - data: Decodable
+/// - Returns: PresentationPacket<T>?
+public func decodePresentationPacket<T: Decodable>(as packetType: T.Type, data: Decodable) -> PresentationPacket<T>? {
+    return decode(as: PresentationPacket<T>.self, data: data)
+}
+
+/// Attempts to decode the decodable data provided into a Packet with the Model of type T
+///
+/// - Parameters:
+///   - packetType: T.Type Must conform to type Decodable
+///   - data: Decodable
+/// - Returns: Packet<T>?
+public func decodePacket<T: Decodable>(as packetType: T.Type, data: Decodable) -> Packet<T>? {
+    return decode(as: Packet<T>.self, data: data)
 }
 
 public func decode<T: Decodable>(as type: T.Type , data: Decodable) -> T? {
