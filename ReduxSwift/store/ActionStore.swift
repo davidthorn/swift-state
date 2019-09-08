@@ -40,6 +40,34 @@ public struct Packet<T: Codable>: Codable{
     }
 }
 
+public enum PresentationType: String, Codable {
+    case present
+    case push
+    case modal
+}
+
+public struct PresentationPacket<Model: Codable>: Codable{
+    public let url: URL
+    public let item: Model?
+    public let type: PresentationType
+    public init(url: URL, item: Model? , type: PresentationType = .push) {
+        self.url = url
+        self.item = item
+        self.type = type
+    }
+    
+    /// Encodes the item T to data
+    /// This property will always return Data, it is the responsibility of
+    /// the decoding end to determine if the packet stunk or not.
+    public var encoded: Data {
+        do {
+            return try JSONEncoder.init().encode(self)
+        } catch {
+            return Data.init()
+        }
+    }
+}
+
 extension URL {
     public var packet: Packet<URL> { return Packet<URL>.init(item: self) }
 }
@@ -137,32 +165,61 @@ fileprivate struct ActionStore {
     }
     
     /// Dispatches this data to all observers and transformers that have subscribed to this action.
+    /// If the first parameter is set to true then only the first subscriber will receive this data.
     ///
     /// - Parameters:
     ///   - action: ACTION The name of the action that this data should be dispatched to.
     ///   - data: Codable The codable data that will be provided to all subscribers of this action.
+    ///   - first: Bool Indicates if the only the first subscriber should receive the data.
     func dispatch(action: ACTION , data: Codable, first: Bool = false) {
         
-        var transformedData = data
+        let transformedData = transform(action: action, data: data)
         
+        let observers = getActionObservers(action: action)
+        
+        switch first {
+        case true:
+            observers.first?(transformedData)
+        case false:
+            observers.forEach { observer in
+                observer(transformedData)
+            }
+        }
+        
+    }
+    
+    /// Returns all action observers that have subscribed for this ACTION.
+    ///
+    /// - Parameter action: ACTION Name of the action.
+    /// - Returns: [ACTION_OBSERVER]
+    func getActionObservers(action: ACTION) -> [ACTION_OBSERVER] {
+        guard let actionsObservers = actionObservers[action] else { return [] }
+        return actionsObservers
+    }
+    
+    /// Removes all action observers that have subscribed to this action.
+    ///
+    /// - Parameter action: ACTION
+    mutating func removeAllActionObservers(action: ACTION) {
+        self.actionObservers[action]?.removeAll()
+    }
+    
+    /// Calls all transformers that have subscribed to this action.
+    /// All transformers are then passed the data to transform it is required.
+    /// The transformers will always be passed an already transformed data from a previous transformer.
+    ///
+    /// - Parameters:
+    ///   - action: ACTION
+    ///   - data: Codable
+    /// - Returns: Codable
+    func transform(action: ACTION , data: Codable) -> Codable {
+        var transformedData = data
         if let transformers = actionTransformers[action] {
             transformedData = transformers.reduce(transformedData, { (_tData, transformer) -> Codable in
                 return transformer.handler(_tData)
             })
         }
-        
-        guard let actionsObservers = actionObservers[action] else{ return }
-        
-        switch first {
-        case true:
-            actionsObservers.first?(transformedData)
-        case false:
-            actionsObservers.forEach { observer in
-                
-                observer(transformedData)
-            }
-        }
-        
+        return transformedData
     }
     
     /// Dispatches this error to all observers that have subscribed to this action.
@@ -178,23 +235,47 @@ fileprivate struct ActionStore {
         }
     }
     
+    /// Adds an observer for the PRESENT action.
+    /// - Note: Only one observer can be subscribed to the PRESENT action, therefore all others will be removed.
+    ///
+    /// - Parameter observer: @escaping ACTION_OBSERVER
+    mutating func addPresentor(observer: @escaping ACTION_OBSERVER) {
+        self.initialiseObservers(action: PRESENT)
+        removeAllActionObservers(action: PRESENT)
+        subscribe(action: PRESENT, observer: observer)
+    }
+    
 }
 
+/// Helper method to subscribe to this action.
+/// The action observer will be called everytime dispatch is called with this action.
+///
+/// - Parameters:
+///   - action: ACTION
+///   - observer: @escaping ACTION_OBSERVER
 public func subscribe(action: ACTION , observer: @escaping ACTION_OBSERVER) {
     store.subscribe(action: action, observer: observer)
 }
 
+/// Helper method to subscribe to this action.
+/// This action transformer will be called everytime dispatch is called with this action.
+/// The action transformer will be passed the data that has been dispatched.
+/// The transformers are passed the data in the sequeunce that they subscribed.
+///
+/// - Parameters:
+///   - action: ACTION
+///   - transformer: ACTION_TRANSFORMER
 public func subscribe(action: ACTION , transformer: ACTION_TRANSFORMER) {
     store.subscribe(action: action, transformer: transformer)
 }
 
-/// Dispatches action to all subscribers.
-/// All subscribers of this action prior to being dispatched will be
-/// passed the data as their observers param.
+/// Dispatches this data to all observers and transformers that have subscribed to this action.
+/// If the first parameter is set to true then only the first subscriber will receive this data.
 ///
 /// - Parameters:
-///   - action: REDUX_ACTION A string representing the action.
-///   - data: The data passed must comply to codable so that it can be decoded, encoded on both sides.
+///   - action: ACTION The name of the action that this data should be dispatched to.
+///   - data: Codable The codable data that will be provided to all subscribers of this action.
+///   - first: Bool Indicates if the only the first subscriber should receive the data.
 public func dispatch(action: ACTION , data: Codable, first: Bool = false) {
     store.dispatch(action: action, data: data, first: first)
 }
@@ -222,8 +303,13 @@ public func encode<T: Encodable>(type: T) -> Data? {
 
 /// Dispatches a PRESENT action contains the url packet to a presentor/coordinato
 /// The URL should contain all information that the coordinator requires to present the correct feature.
+/// The store will only dispatch this event once and that will be to the first subscriber that subscribed to PRESENT.
 ///
 /// - Parameter url: Packet<URL> Information a coordinator uses to distinguish the feature to be presented.
-public func present(url: Packet<URL>) {
-    dispatch(action: PRESENT, data: url.encoded, first: true)
+public func coordinate<T: Codable>(model: PresentationPacket<T>) {
+    dispatch(action: PRESENT, data: model.encoded, first: true)
+}
+
+public func addPresentor(observer: @escaping ACTION_OBSERVER) {
+    store.addPresentor(observer: observer)
 }
