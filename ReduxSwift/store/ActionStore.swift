@@ -335,6 +335,10 @@ public func encode<T: Encodable>(type: T) -> Data? {
     }
 }
 
+public func encodeModel<T: Encodable>(type: T) -> Data? {
+    return encode(type: type)
+}
+
 /// Dispatches a PRESENT action contains the url packet to a presentor/coordinato
 /// The URL should contain all information that the coordinator requires to present the correct feature.
 /// The store will only dispatch this event once and that will be to the first subscriber that subscribed to PRESENT.

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Qob-Ww-glX">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Person Detail View Controller-->
+        <scene sceneID="qNy-IA-Zqw">
+            <objects>
+                <viewController id="Qob-Ww-glX" customClass="PersonDetailViewController" customModule="ReduxSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MRD-5r-qgX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Person Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYK-af-lv8">
+                                <rect key="frame" x="30" y="74" width="354" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiY-hr-8BP">
+                                <rect key="frame" x="30" y="134" width="354" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Enter persons name here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ekc-oe-5o7">
+                                <rect key="frame" x="30" y="155" width="354" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2kV-AW-akF"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ys4-S7-Eey">
+                                <rect key="frame" x="30" y="235" width="354" height="50"/>
+                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="rJ0-e2-hxz"/>
+                                </constraints>
+                                <state key="normal" title="Update">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="updateAction:" destination="Qob-Ww-glX" eventType="touchUpInside" id="GEO-4S-afg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xTf-Bu-LEb" firstAttribute="trailing" secondItem="QiY-hr-8BP" secondAttribute="trailing" constant="30" id="02s-W8-RFx"/>
+                            <constraint firstItem="ys4-S7-Eey" firstAttribute="leading" secondItem="xTf-Bu-LEb" secondAttribute="leading" constant="30" id="0tY-eQ-dCJ"/>
+                            <constraint firstItem="xTf-Bu-LEb" firstAttribute="trailing" secondItem="ys4-S7-Eey" secondAttribute="trailing" constant="30" id="804-2v-eoI"/>
+                            <constraint firstItem="ekc-oe-5o7" firstAttribute="leading" secondItem="xTf-Bu-LEb" secondAttribute="leading" constant="30" id="8Gr-BA-1K3"/>
+                            <constraint firstItem="QiY-hr-8BP" firstAttribute="top" secondItem="hYK-af-lv8" secondAttribute="bottom" constant="30" id="Den-d8-zVs"/>
+                            <constraint firstItem="hYK-af-lv8" firstAttribute="leading" secondItem="xTf-Bu-LEb" secondAttribute="leading" constant="30" id="Eiu-Qe-04F"/>
+                            <constraint firstItem="QiY-hr-8BP" firstAttribute="leading" secondItem="xTf-Bu-LEb" secondAttribute="leading" constant="30" id="QBD-cA-evw"/>
+                            <constraint firstItem="xTf-Bu-LEb" firstAttribute="trailing" secondItem="ekc-oe-5o7" secondAttribute="trailing" constant="30" id="aRz-yS-KSE"/>
+                            <constraint firstItem="ys4-S7-Eey" firstAttribute="top" secondItem="ekc-oe-5o7" secondAttribute="bottom" constant="30" id="dWY-db-xGZ"/>
+                            <constraint firstItem="xTf-Bu-LEb" firstAttribute="trailing" secondItem="hYK-af-lv8" secondAttribute="trailing" constant="30" id="epc-D7-1hm"/>
+                            <constraint firstItem="hYK-af-lv8" firstAttribute="top" secondItem="xTf-Bu-LEb" secondAttribute="top" constant="30" id="uQl-QX-ib0"/>
+                            <constraint firstItem="ekc-oe-5o7" firstAttribute="top" secondItem="QiY-hr-8BP" secondAttribute="bottom" id="z7d-HP-odt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xTf-Bu-LEb"/>
+                    </view>
+                    <connections>
+                        <outlet property="personNameTextField" destination="ekc-oe-5o7" id="5FZ-6K-Vov"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s29-cB-N7b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823" y="-193"/>
+        </scene>
+    </scenes>
+</document>

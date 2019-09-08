@@ -13,11 +13,16 @@
 		44CBA3AE2323A3DA005E763E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3AD2323A3DA005E763E /* Assets.xcassets */; };
 		44CBA3B12323A3DA005E763E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3AF2323A3DA005E763E /* LaunchScreen.storyboard */; };
 		44CBA3BC2323A3DA005E763E /* ReduxSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3BB2323A3DA005E763E /* ReduxSwiftTests.swift */; };
-		44CBA3C92323A410005E763E /* ReduxHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3C82323A410005E763E /* ReduxHome.storyboard */; };
-		44CBA3CB2323A427005E763E /* ReduxHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */; };
-		44CBA3D12323AA1E005E763E /* PeopleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D02323AA1E005E763E /* PeopleStore.swift */; };
-		44CBA3D52323B240005E763E /* HomePresentationAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D42323B240005E763E /* HomePresentationAction.swift */; };
+		44CBA3C92323A410005E763E /* PeopleList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3C82323A410005E763E /* PeopleList.storyboard */; };
+		44CBA3CB2323A427005E763E /* PeopleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3CA2323A427005E763E /* PeopleListViewController.swift */; };
+		44CBA3D12323AA1E005E763E /* person_store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D02323AA1E005E763E /* person_store.swift */; };
+		44CBA3D52323B240005E763E /* person.detail.presentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D42323B240005E763E /* person.detail.presentor.swift */; };
 		44CBA3D72323B477005E763E /* ActionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D62323B477005E763E /* ActionStore.swift */; };
+		44CBA3D923253BDE005E763E /* model_stores.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3D823253BDE005E763E /* model_stores.swift */; };
+		44CBA3DB23253C1B005E763E /* presentation_store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3DA23253C1B005E763E /* presentation_store.swift */; };
+		44CBA3DE23253C98005E763E /* transformer_store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3DD23253C98005E763E /* transformer_store.swift */; };
+		44CBA3E12325857A005E763E /* PersonDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44CBA3E02325857A005E763E /* PersonDetail.storyboard */; };
+		44CBA3E323258588005E763E /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CBA3E223258588005E763E /* PersonDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,11 +46,16 @@
 		44CBA3B72323A3DA005E763E /* ReduxSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReduxSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CBA3BB2323A3DA005E763E /* ReduxSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxSwiftTests.swift; sourceTree = "<group>"; };
 		44CBA3BD2323A3DB005E763E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44CBA3C82323A410005E763E /* ReduxHome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReduxHome.storyboard; sourceTree = "<group>"; };
-		44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxHomeViewController.swift; sourceTree = "<group>"; };
-		44CBA3D02323AA1E005E763E /* PeopleStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleStore.swift; sourceTree = "<group>"; };
-		44CBA3D42323B240005E763E /* HomePresentationAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresentationAction.swift; sourceTree = "<group>"; };
+		44CBA3C82323A410005E763E /* PeopleList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PeopleList.storyboard; sourceTree = "<group>"; };
+		44CBA3CA2323A427005E763E /* PeopleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleListViewController.swift; sourceTree = "<group>"; };
+		44CBA3D02323AA1E005E763E /* person_store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person_store.swift; sourceTree = "<group>"; };
+		44CBA3D42323B240005E763E /* person.detail.presentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = person.detail.presentor.swift; sourceTree = "<group>"; };
 		44CBA3D62323B477005E763E /* ActionStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionStore.swift; sourceTree = "<group>"; };
+		44CBA3D823253BDE005E763E /* model_stores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = model_stores.swift; sourceTree = "<group>"; };
+		44CBA3DA23253C1B005E763E /* presentation_store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = presentation_store.swift; sourceTree = "<group>"; };
+		44CBA3DD23253C98005E763E /* transformer_store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = transformer_store.swift; sourceTree = "<group>"; };
+		44CBA3E02325857A005E763E /* PersonDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PersonDetail.storyboard; sourceTree = "<group>"; };
+		44CBA3E223258588005E763E /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				44CBA3D62323B477005E763E /* ActionStore.swift */,
+				44CBA3DC23253C88005E763E /* transformers */,
 				44CBA3D32323B224005E763E /* presentation */,
 				44CBA3D22323B21A005E763E /* models */,
 			);
@@ -129,24 +140,26 @@
 		44CBA3CC2323A477005E763E /* features */ = {
 			isa = PBXGroup;
 			children = (
-				44CBA3CD2323A47D005E763E /* home */,
+				44CBA3DF2325856E005E763E /* person */,
+				44CBA3CD2323A47D005E763E /* people */,
 			);
 			path = features;
 			sourceTree = "<group>";
 		};
-		44CBA3CD2323A47D005E763E /* home */ = {
+		44CBA3CD2323A47D005E763E /* people */ = {
 			isa = PBXGroup;
 			children = (
-				44CBA3C82323A410005E763E /* ReduxHome.storyboard */,
-				44CBA3CA2323A427005E763E /* ReduxHomeViewController.swift */,
+				44CBA3C82323A410005E763E /* PeopleList.storyboard */,
+				44CBA3CA2323A427005E763E /* PeopleListViewController.swift */,
 			);
-			path = home;
+			path = people;
 			sourceTree = "<group>";
 		};
 		44CBA3D22323B21A005E763E /* models */ = {
 			isa = PBXGroup;
 			children = (
-				44CBA3D02323AA1E005E763E /* PeopleStore.swift */,
+				44CBA3D02323AA1E005E763E /* person_store.swift */,
+				44CBA3D823253BDE005E763E /* model_stores.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -154,9 +167,27 @@
 		44CBA3D32323B224005E763E /* presentation */ = {
 			isa = PBXGroup;
 			children = (
-				44CBA3D42323B240005E763E /* HomePresentationAction.swift */,
+				44CBA3D42323B240005E763E /* person.detail.presentor.swift */,
+				44CBA3DA23253C1B005E763E /* presentation_store.swift */,
 			);
 			path = presentation;
+			sourceTree = "<group>";
+		};
+		44CBA3DC23253C88005E763E /* transformers */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3DD23253C98005E763E /* transformer_store.swift */,
+			);
+			path = transformers;
+			sourceTree = "<group>";
+		};
+		44CBA3DF2325856E005E763E /* person */ = {
+			isa = PBXGroup;
+			children = (
+				44CBA3E02325857A005E763E /* PersonDetail.storyboard */,
+				44CBA3E223258588005E763E /* PersonDetailViewController.swift */,
+			);
+			path = person;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +271,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CBA3C92323A410005E763E /* ReduxHome.storyboard in Resources */,
+				44CBA3C92323A410005E763E /* PeopleList.storyboard in Resources */,
+				44CBA3E12325857A005E763E /* PersonDetail.storyboard in Resources */,
 				44CBA3B12323A3DA005E763E /* LaunchScreen.storyboard in Resources */,
 				44CBA3AE2323A3DA005E763E /* Assets.xcassets in Resources */,
 				44CBA3AC2323A3D9005E763E /* Main.storyboard in Resources */,
@@ -261,11 +293,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CBA3D52323B240005E763E /* HomePresentationAction.swift in Sources */,
+				44CBA3D52323B240005E763E /* person.detail.presentor.swift in Sources */,
 				44CBA3A92323A3D9005E763E /* ViewController.swift in Sources */,
 				44CBA3D72323B477005E763E /* ActionStore.swift in Sources */,
-				44CBA3D12323AA1E005E763E /* PeopleStore.swift in Sources */,
-				44CBA3CB2323A427005E763E /* ReduxHomeViewController.swift in Sources */,
+				44CBA3DB23253C1B005E763E /* presentation_store.swift in Sources */,
+				44CBA3D923253BDE005E763E /* model_stores.swift in Sources */,
+				44CBA3D12323AA1E005E763E /* person_store.swift in Sources */,
+				44CBA3CB2323A427005E763E /* PeopleListViewController.swift in Sources */,
+				44CBA3DE23253C98005E763E /* transformer_store.swift in Sources */,
+				44CBA3E323258588005E763E /* PersonDetailViewController.swift in Sources */,
 				44CBA3A72323A3D9005E763E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,6 +8,8 @@
 
 import UIKit
 
+public let PRESENT: String = "PRESENT_VIEW_CONTROLLER"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,19 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        
-        subscribe(action: "PEOPLE_ALL_ACTION", transformer: (id: UUID.init().uuidString , handler: { data in
-            print("transform called for people all")
-            return data
-        }))
-        
-        registerPeople()
-        
         let viewModel = PeopleModel.init(items: [])
         
-        let vc = ReduxHomeViewController.instance(viewModel: viewModel)
+        let vc = PeopleListViewController.instance(viewModel: viewModel)
         vc.title = "Home"
         let nav = UINavigationController.init(rootViewController: vc)
+        
+        presentation_store_initialise(controller: nav)
+        model_store_initialise()
+        transformer_store_initialise()
+        
         
         self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
